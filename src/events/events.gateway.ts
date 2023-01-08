@@ -32,11 +32,21 @@ export class EventsGateway {
 
   @SubscribeMessage('msg')
   async handleMessage(
-    @MessageBody() data: { message: string; userId: string },
+    @MessageBody()
+    data: {
+      message: string;
+      userId: string;
+      userName: string;
+      userAvatar: string;
+    },
   ): Promise<string> {
     const userData = {
       message: data.message,
-      sender: data.userId,
+      sender: {
+        id: data.userId,
+        name: data.userName,
+        avatar: data.userAvatar,
+      },
       timestamp: Date.now(),
     };
 
