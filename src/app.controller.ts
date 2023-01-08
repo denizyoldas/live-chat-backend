@@ -9,6 +9,6 @@ export class AppController {
 
   @Get('massaka')
   getMassaka(): string {
-    return 'Salam Dünya! - massaka';
+    return 'Salam Dünya! - DYA';
   }
 }
