@@ -6,4 +6,9 @@ export class AppController {
   getHello(): string {
     return 'Salam Dünya! - massaka';
   }
+
+  @Get('massaka')
+  getMassaka(): string {
+    return 'Salam Dünya! - massaka';
+  }
 }
