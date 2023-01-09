@@ -11,4 +11,9 @@ export class AppController {
   getMassaka(): string {
     return 'Salam Dünya! - DYA';
   }
+
+  @Get('/cakir')
+  getCakir(): string {
+    return 'Kim ne oluyorsa Allah mübarek etsin dayı. Azdan az çoktan çok gider. - İstanbul Sefiri';
+  }
 }
