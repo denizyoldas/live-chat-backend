@@ -16,4 +16,9 @@ export class AppController {
   getCakir(): string {
     return 'Kim ne oluyorsa Allah mübarek etsin dayı. Azdan az çoktan çok gider. - İstanbul Sefiri';
   }
+
+  @Get('/napolyon')
+  getNapolyon(): string {
+    return 'Para para para';
+  }
 }
