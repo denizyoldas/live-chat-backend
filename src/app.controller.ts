@@ -17,8 +17,8 @@ export class AppController {
     return 'Kim ne oluyorsa Allah mübarek etsin dayı. Azdan az çoktan çok gider. - İstanbul Sefiri';
   }
 
-  @Get('/napolyon')
+  @Get('/cengo')
   getNapolyon(): string {
-    return 'Para para para';
+    return 'Siktir git laaan öyle şey mi olur amına - Cengo';
   }
 }
