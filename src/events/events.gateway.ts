@@ -1,3 +1,4 @@
+import { ChatService } from './../chat/chat.service';
 import {
   MessageBody,
   SubscribeMessage,
@@ -17,6 +18,8 @@ import { Server } from 'socket.io';
 export class EventsGateway {
   @WebSocketServer()
   server: Server;
+
+  constructor(private chatService: ChatService) {}
 
   @SubscribeMessage('events')
   findAll(@MessageBody() data: any): Observable<WsResponse<number>> {
@@ -51,6 +54,8 @@ export class EventsGateway {
     };
 
     this.server.emit('msg', userData);
+    this.chatService.create(userData as any);
+
     return data.message;
   }
 }
