@@ -14,6 +14,9 @@ export class ChatService {
   }
 
   deleteAll() {
-    CHATS = [];
+    if (CHATS.length > 0) {
+      CHATS = [];
+      return 'Deleted all chats';
+    }
   }
 }
