@@ -23,4 +23,9 @@ export class AppController {
   getNapolyon(): string {
     return 'Siktir git laaan öyle şey mi olur amına - Cengo';
   }
+
+  @Get('/derdo')
+  getSad(): string {
+    return 'İntihardan önce ölünür sonra intihar edilir.';
+  }
 }
