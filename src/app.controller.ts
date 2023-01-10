@@ -43,4 +43,9 @@ export class AppController {
   getSad4(): string {
     return 'Amına koyim nest cron gibi alsana buildi';
   }
+
+  @Get('/derdo5')
+  getSad5(): string {
+    return 'Çözdüm aq autobuildini amına koyim';
+  }
 }
