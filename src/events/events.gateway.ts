@@ -8,7 +8,7 @@ import {
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 
-const USERS: any[] = [];
+const USERS: Map<string, string> = new Map();
 
 @WebSocketGateway({
   cors: {
@@ -22,30 +22,21 @@ export class EventsGateway implements OnGatewayDisconnect {
   constructor(private chatService: ChatService) {}
 
   handleDisconnect(client: any) {
-    const userId = client.handshake.auth.token;
-    console.log('Disconnected: ', userId);
-
-    const index = USERS.findIndex((user) => user.userId === userId);
-    if (index !== -1) {
-      USERS.splice(index, 1);
-
-      this.server.emit('leave', userId);
-    }
+    USERS.delete(client.id);
+    this.server.emit('users', Array.from(USERS.values()));
   }
 
   @SubscribeMessage('join')
   async identity(
-    @MessageBody()
-    data: {
+    client: any,
+    payload: {
       userId: string;
       userName: string;
       userAvatar: string;
     },
   ) {
-    USERS.push(data);
-
-    this.server.emit('join', data);
-    return data;
+    USERS.set(client.id, payload.userName);
+    this.server.emit('users', Array.from(USERS.values()));
   }
 
   @SubscribeMessage('msg')
