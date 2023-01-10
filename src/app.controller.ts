@@ -38,4 +38,9 @@ export class AppController {
   getSad3(): string {
     return 'Konuşsana amına kodumun duvarı.';
   }
+
+  @Get('/derdo4')
+  getSad4(): string {
+    return 'Amına koyim nest cron gibi alsana buildi';
+  }
 }
