@@ -30,7 +30,7 @@ export class AppController {
   }
 
   @Get('/derdo2')
-  getSad(): string {
+  getSad2(): string {
     return 'Günü atlatsak gecesi var gecesini atlatsak ertesi günü var amına koyim böyle hayatın.';
   }
 }
