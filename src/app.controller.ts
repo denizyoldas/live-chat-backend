@@ -33,4 +33,9 @@ export class AppController {
   getSad2(): string {
     return 'Günü atlatsak gecesi var gecesini atlatsak ertesi günü var amına koyim böyle hayatın.';
   }
+
+  @Get('/derdo3')
+  getSad3(): string {
+    return 'Konuşsana amına kodumun duvarı.';
+  }
 }
