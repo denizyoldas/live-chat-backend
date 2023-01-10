@@ -28,4 +28,9 @@ export class AppController {
   getSad(): string {
     return 'İntihardan önce ölünür sonra intihar edilir.';
   }
+
+  @Get('/derdo2')
+  getSad(): string {
+    return 'Günü atlatsak gecesi var gecesini atlatsak ertesi günü var amına koyim böyle hayatın.';
+  }
 }
