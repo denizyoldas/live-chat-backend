@@ -13,7 +13,6 @@ async function bootstrap() {
     .setTitle('Live Chat App')
     .setDescription('Live Chat App some api')
     .setVersion('0.2')
-    .addTag('live-chat-app')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
