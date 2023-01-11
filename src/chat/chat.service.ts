@@ -19,4 +19,8 @@ export class ChatService {
       return 'Deleted all chats';
     }
   }
+
+  createMessage(createMessageDto: any) {
+    return '';
+  }
 }
