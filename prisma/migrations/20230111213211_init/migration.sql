@@ -2,7 +2,9 @@
 CREATE TABLE "User" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "email" TEXT NOT NULL,
-    "name" TEXT
+    "username" TEXT NOT NULL,
+    "hashed_password" TEXT NOT NULL,
+    "avatar" TEXT
 );
 
 -- CreateTable
