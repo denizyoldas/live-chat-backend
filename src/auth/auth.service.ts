@@ -37,6 +37,19 @@ export class AuthService {
   }
 
   async register(user: any) {
+    // check if user exist have some email or username
+    const exsistUsername = await this.usersService.user({
+      username: user.username,
+    });
+
+    const exsistEmail = await this.usersService.user({
+      email: user.email,
+    });
+
+    if (exsistUsername || exsistEmail) {
+      return null;
+    }
+
     return this.usersService.createUser(user);
   }
 }

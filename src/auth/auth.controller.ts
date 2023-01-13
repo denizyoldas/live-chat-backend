@@ -36,8 +36,14 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() user: RegisterDto, @Response() res: any) {
-    this.authService.register(user);
-    return res.status(200).json({ message: 'success' });
+    const result = await this.authService.register(user);
+
+    if (!result) {
+      res.status(400).json({ message: ['Email Or Username Already Exist'] });
+      return;
+    }
+
+    return res.status(200).json({ message: 'success', result });
   }
 
   @UseGuards(JwtAuthGuard)
