@@ -27,7 +27,7 @@ export class AuthController {
     });
 
     if (!result) {
-      res.status(401).json({ message: 'Unauthorized' });
+      res.status(401).json({ message: ['password or username is wrong'] });
       return;
     }
 
@@ -50,5 +50,20 @@ export class AuthController {
   @Get('profile')
   getProfile(@Request() req: any) {
     return req.user;
+  }
+
+  @Post('refresh-token')
+  async refreshToken(@Request() req: any, @Response() res: any) {
+    const result = await this.authService.login({
+      username: req.user.username,
+      pass: req.user.password,
+    });
+
+    if (!result) {
+      res.status(401).json({ message: ['password or username is wrong'] });
+      return;
+    }
+
+    return res.status(200).json(result);
   }
 }
