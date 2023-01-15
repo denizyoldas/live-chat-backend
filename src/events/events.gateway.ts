@@ -44,23 +44,31 @@ export class EventsGateway implements OnGatewayDisconnect {
     @MessageBody()
     data: {
       message: string;
-      userId: string;
-      userName: string;
-      userAvatar: string;
+      chatId: string;
+      senderId: string;
+      senderName: string;
+      senderAvatar: string;
     },
   ): Promise<string> {
     const userData = {
       message: data.message,
       sender: {
-        id: data.userId,
-        name: data.userName,
-        avatar: data.userAvatar,
+        id: data.senderId,
+        name: data.senderName,
+        avatar: data.senderAvatar,
       },
+      chatId: data.chatId,
       timestamp: Date.now(),
     };
 
     this.server.emit('msg', userData);
-    this.chatService.create(userData as any);
+
+    this.chatService.addMessage({
+      chatId: data.chatId,
+      message: data.message,
+      sender: data.senderName,
+      timestamp: Date.now(),
+    });
 
     return data.message;
   }
