@@ -68,6 +68,17 @@ export class ChatService {
       return false;
     }
 
+    const chatExists = CONVERSATIONS.find((chat) => {
+      return (
+        chat.userIds.includes(createChatDto.userId) &&
+        chat.userIds.includes(user.id)
+      );
+    });
+
+    if (chatExists) {
+      return chatExists.id;
+    }
+
     const chat = {
       id: guidGenerator(),
       userIds: [createChatDto.userId, user.id],

@@ -23,7 +23,7 @@ export class ChatController {
     const result = await this.chatService.createConversation(createChatDto);
 
     if (result) {
-      return res.status(200).json({ message: 'Chat created' });
+      return res.status(200).json({ message: 'Chat created', result });
     }
 
     return res.status(400).json({ message: 'User not found' });
